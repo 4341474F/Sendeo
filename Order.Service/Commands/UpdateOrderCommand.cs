@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 
-namespace Order.Service.Commands
+namespace OrderService.API.Commands
 {
     public class UpdateOrderCommand : IRequest
     {
-       public OrdersDto Orders { get; set; }
+       public string Id { get; set; }
 
     }
 }

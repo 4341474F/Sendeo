@@ -1,21 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using OrderAPI.Data;
 using OrderAPI.EventBus;
-using System;
+using MediatR;
+using OrderService.Data;
+using OrderService.Domain;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<OrderAPIContext>(options =>
+builder.Services.AddDbContext<OrderApiContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("OrderAPIContext") ?? throw new InvalidOperationException("Connection string 'OrderAPIContext' not found.")));
 
 // Add services to the container.
-
-builder.Services.AddControllers();
 builder.Services.AddScoped<IMessageProducer, Producer>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+//builder.Services.AddScoped<IRequestHandler<GetAllOrdersQuery, List<OrdersDto>>>();
+builder.Services.AddMediatR(typeof(GetAllOrdersQuery));
+builder.Services.AddControllers();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
 

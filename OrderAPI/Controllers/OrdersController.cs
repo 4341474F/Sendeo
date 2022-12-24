@@ -1,115 +1,83 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Order.Service;
 using Order.Service.Queries;
-using OrderAPI.Data;
-using OrderAPI.Entities;
-using OrderAPI.EventBus;
-using System;
-using Order.Service.Commands;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using Azure.Core;
+using OrderService.API.Commands;
+using OrderService.Queries;
 
 namespace OrderAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class OrdersController : ControllerBase
     {
-        private readonly OrderAPIContext _context;
-        private readonly IMessageProducer _messagePublisher;
         private readonly IMediator _mediator;
 
-        public OrdersController(OrderAPIContext context, IMessageProducer messagePublisher, IMediator mediator)
+        public OrdersController(IMediator mediator)
         {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
-            _messagePublisher = messagePublisher ?? throw new ArgumentNullException(nameof(messagePublisher)); 
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
         // GET: api/Orders
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Entities.Order>>> GetOrder()
+        public async Task<ActionResult<IEnumerable<Order.Service.Domain.Order>>> GetOrder()
         {
-            var orders = await _mediator.Send(new FindAllOrdersQuery());
+            var orders = await _mediator.Send(new GetAllOrdersQuery());
             return Ok(orders);
         }
 
         // GET: api/Orders/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Entities.Order>> GetOrder(string id)
+        public async Task<ActionResult<Order.Service.Domain.Order>> GetOrder(string id)
         {
             var orders = await _mediator.Send(new FindAllOrdersByIdQuery(id));
             return Ok(orders);
         }
 
-        // GET: api/Orders/5
+        /*// GET: api/Orders/5
         [HttpGet("{dateTime}")]
+        [Route("date/{dateTime:datetime:regex(\\d{4}-\\d{2}-\\d{2})}")]
         public async Task<ActionResult> GetOrdersByDateTime(DateTime dateTime)
         {
             var orders = await _mediator.Send(new FindAllOrdersByDateQuery(dateTime));
 
             //return new JsonResult(orders);    ???
             return Ok(orders);
-        }
+        }*/
 
         // PUT: api/Orders/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrder([FromBody] string id, UpdateOrderCommand request)
-        {
-           
-            try
-            {
-                var result = await _mediator.Send(request);
-                _messagePublisher.SendMessage(request.Orders);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!OrderExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Orders
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<OrdersDto>> PostOrder([FromBody] UpdateOrderCommand request)
+        [HttpPut]
+        public async Task<IActionResult> PutOrder([FromBody] UpdateOrderCommand request)
         {
             var result = await _mediator.Send(request);
-            _messagePublisher.SendMessage(request.Orders);
+            //_messagePublisher.SendMessage(request.Orders);
 
-            return CreatedAtAction("GetOrder", new { id = request.Orders.Id }, request.Orders);
+            return new JsonResult(result);
         }
+
+        //// POST: api/Orders
+        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //[HttpPost]
+        //public async Task<ActionResult<OrdersDto>> PostOrder([FromBody] UpdateOrderCommand request)
+        //{
+        //    var result = await _mediator.Send(request);
+        //    _messagePublisher.SendMessage(request.Orders);
+
+        //    return CreatedAtAction("GetOrder", new { id = request.Orders.Id }, request.Orders);
+        //}
 
         // DELETE: api/Orders/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrder(string id)
         {
-            var order = await _context.Orders.FindAsync(id);
-            if (order == null)
-            {
-                return NotFound();
-            }
-
-            _context.Orders.Remove(order);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            var result = await _mediator.Send(new DeleteOrderCommand() { Id = id });
+            return new JsonResult(result);
         }
 
-        private bool OrderExists(string id)
+        private async Task<IActionResult> OrderExistsAsync(string id)
         {
-            return _context.Orders.Any(e => e.Id == id);
+            var result =  await _mediator.Send(new FindAllOrdersByIdQuery(id));
+            return new JsonResult(result);
         }
     }
 }

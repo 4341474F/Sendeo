@@ -13,7 +13,7 @@ namespace OrderAPI.Entities
         public string PorductId { get; set; }
 
         [ForeignKey("OrderId")]
-        public Order Order { get; set; }
+        public Order.Service.Domain.Order Order { get; set; }
         [ForeignKey("PorductId")]
         public Product Product { get; set; }
 
