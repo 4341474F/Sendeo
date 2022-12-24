@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Order.Service.Queries;
 using OrderService.API.Commands;
-using OrderService.Queries;
+using OrderService.API.Domain;
+using OrderService.API.Queries;
 
 namespace OrderAPI.Controllers
 {
@@ -19,7 +19,7 @@ namespace OrderAPI.Controllers
 
         // GET: api/Orders
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Order.Service.Domain.Order>>> GetOrder()
+        public async Task<ActionResult<IEnumerable<Order>>> GetOrder()
         {
             var orders = await _mediator.Send(new GetAllOrdersQuery());
             return Ok(orders);
@@ -27,7 +27,7 @@ namespace OrderAPI.Controllers
 
         // GET: api/Orders/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Order.Service.Domain.Order>> GetOrder(string id)
+        public async Task<ActionResult<Order>> GetOrder(string id)
         {
             var orders = await _mediator.Send(new FindAllOrdersByIdQuery(id));
             return Ok(orders);

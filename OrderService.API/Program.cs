@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OrderAPI.EventBus;
 using MediatR;
-using OrderService.Data;
-using OrderService.Domain;
+using OrderService.API.Data;
+using OrderService.API.Domain;
+using OrderService.API.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<OrderApiContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("OrderAPIContext") ?? throw new InvalidOperationException("Connection string 'OrderAPIContext' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("sendeo-db") ?? throw new InvalidOperationException("Connection string 'sendeo-db' not found."), b => b.MigrationsAssembly("OrderService.API")));
 
 // Add services to the container.
 builder.Services.AddScoped<IMessageProducer, Producer>();

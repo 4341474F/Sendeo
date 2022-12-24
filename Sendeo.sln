@@ -13,13 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAPI", "CustomerAPI\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductAPI", "ProdcutAPI\ProductAPI.csproj", "{F5525814-59B4-4428-994E-D6C0C5019E10}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService", "OrderAPI\OrderService.csproj", "{2E06B11C-B55B-4497-99C2-73F3B6E9E9F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService", "OrderService\OrderService.csproj", "{2E06B11C-B55B-4497-99C2-73F3B6E9E9F9}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{0A435A53-EA9E-48F8-A95D-116352371CCE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consumer", "Consumer\Consumer.csproj", "{22C6B778-E8D9-491F-90CE-14017FC34851}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.API", "Order.Service\OrderService.API.csproj", "{7AE72E21-AC1A-4F49-968D-D7DAACDA8B3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.API", "OrderService.API\OrderService.API.csproj", "{7AE72E21-AC1A-4F49-968D-D7DAACDA8B3C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.UnitTests", "Order.UnitTests\Order.UnitTests.csproj", "{75261E56-61B9-4978-9B96-8E294FA3E0BF}"
 EndProject

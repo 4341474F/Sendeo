@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace OrderService.Data
+namespace OrderService.API.Data
 {
     public class OrderApiContext : DbContext
     {

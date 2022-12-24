@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediatR;
-using OrderService.Data;
+﻿using MediatR;
+using OrderService.API.Data;
 
-namespace Order.Service.Queries
+namespace OrderService.API.Queries
 {
 
     public class FindAllOrdersByIdQuery :IRequest<List<OrdersDto>>

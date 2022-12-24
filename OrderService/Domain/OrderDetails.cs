@@ -1,10 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 using ProductAPI.Entities;
 
-
-namespace OrderAPI.Entities
+namespace OrderService.API.Domain
 {
     public class OrderDetails
     {
@@ -13,7 +10,7 @@ namespace OrderAPI.Entities
         public string PorductId { get; set; }
 
         [ForeignKey("OrderId")]
-        public Order.Service.Domain.Order Order { get; set; }
+        public Order Order { get; set; }
         [ForeignKey("PorductId")]
         public Product Product { get; set; }
 

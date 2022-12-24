@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Order.Service.Domain;
-using OrderService.Domain;
+using OrderService.API.Domain;
 
-namespace OrderService.Data
+namespace OrderService.API.Data
 {
     public class OrderRepository : IOrderRepository
     {

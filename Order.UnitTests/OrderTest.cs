@@ -1,7 +1,6 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc.Testing;
 using FluentAssertions;
-using Order.Service;
 using System.Threading.Tasks;
 using Xunit;
 

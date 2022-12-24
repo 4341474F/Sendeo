@@ -5,7 +5,7 @@ services:
     image: ${DOCKER_REGISTRY-}orderapi
     build:
       context: .
-      dockerfile: OrderAPI/Dockerfile
+      dockerfile: OrderService.API/Dockerfile
     depends_on:
       - db
 
