@@ -47,23 +47,11 @@ namespace OrderService.API.Controllers
             return Ok(orders);
         }*/
 
-        // PUT: api/Order/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut]
-        //[Route("PutOrder")]
-        public async Task<IActionResult> PutOrder(UpdateOrderCommand request)
-        {
-            var result = await _mediator.Send(request);
-            //_messagePublisher.SendMessage(request.Order);
-
-            return new JsonResult(result);
-        }
-
         // POST: api/Order
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [Route("PostOrder")]
-        public async Task<ActionResult<Order>> PostOrder( CreateOrderCommand request)
+        public async Task<ActionResult<Order>> PostOrder(CreateOrderCommand request)
         {
             var result = await _mediator.Send(new CreateOrderCommand{Order = request.Order});
             //_messagePublisher.SendMessage(request.Order);
@@ -74,13 +62,13 @@ namespace OrderService.API.Controllers
         // DELETE: api/Order/5
         [HttpDelete("{id}")]
         //[Route("DeleteOrder")]
-        public async Task<IActionResult> DeleteOrder(string id)
+        public async Task<string> DeleteOrder(DeleteOrderCommand request, string id)
         {
-            var result = await _mediator.Send(new DeleteOrderCommand() { Id = id });
-            return new JsonResult(result);
+            return await _mediator.Send(new DeleteOrderCommand(id));
+            
         }
 
-        private async Task<IActionResult> OrderExistsAsync(string id)
+        private async Task<ActionResult<Order>> OrderExistsAsync(string id)
         {
             var result =  await _mediator.Send(new FindAllOrdersByIdQuery(id));
             return new JsonResult(result);

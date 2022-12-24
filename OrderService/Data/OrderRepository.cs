@@ -30,14 +30,15 @@ namespace OrderService.Data
             return await _orderContext.Orders.FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public Task<Order> Delete(string id)
+        public async Task<string> DeleteAsync(string Id)
         {
-            throw new NotImplementedException();
-        }
+            var request = await _orderContext.Orders.FirstOrDefaultAsync(p => p.Id == Id);
+            if (request?.Id == "")
+                return($"Order with {Id} is not found!");
 
-        public Task<List<Order>> Update()
-        {
-            throw new NotImplementedException();
+            _orderContext.Orders.Remove(request);
+            await _orderContext.SaveChangesAsync();
+            return request.Id;
         }
         
     }

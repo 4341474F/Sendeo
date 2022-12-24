@@ -11,8 +11,5 @@ namespace OrderService.Queries
         {
             _id = id;
         }
-
-        
-        
     }
 }
