@@ -1,15 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
-using OrderService.API.Data;
+using OrderService.Data;
 
-namespace OrderService.API.Domain
+namespace OrderService.Domain
 {
     public interface IOrderRepository
     {
-        Task<EntityEntry<OrdersDto>> Add(OrdersDto Order);
-
-        Task<List<OrdersDto>> GetAllOrders();
-        Task<OrdersDto> FindById(string id);
-
-        Task<OrdersDto> Delete(string id);
+        Task<Order> AddAsync(Order Order);
+        Task<List<Order>> GetAllOrders();
+        Task<Order> FindById(string id);
+        Task<Order> Delete(string id);
     }
 }

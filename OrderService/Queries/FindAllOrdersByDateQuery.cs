@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using OrderService.API.Data;
+using OrderService.Data;
 
-namespace OrderService.API.Queries
+namespace OrderService.Queries
 {
 
     public class FindAllOrdersByDateQuery :IRequest<List<OrdersDto>>

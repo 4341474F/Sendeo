@@ -1,20 +1,24 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OrderAPI.EventBus;
 using MediatR;
-using OrderService.API.Data;
-using OrderService.API.Domain;
-using OrderService.API.Queries;
+using OrderService.Commands;
+using System.Reflection;
+using OrderService.API.EventBus;
+using OrderService.Data;
+using OrderService.Domain;
+using OrderService.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers();
 builder.Services.AddDbContext<OrderApiContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("sendeo-db") ?? throw new InvalidOperationException("Connection string 'sendeo-db' not found."), b => b.MigrationsAssembly("OrderService.API")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("sendeo-db") ?? throw new InvalidOperationException("Connection string 'sendeo-db' not found."), 
+        b => b.MigrationsAssembly("OrderService.API")
+    ));
 
 // Add services to the container.
 builder.Services.AddScoped<IMessageProducer, Producer>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-//builder.Services.AddScoped<IRequestHandler<GetAllOrdersQuery, List<OrdersDto>>>();
 builder.Services.AddMediatR(typeof(GetAllOrdersQuery));
-builder.Services.AddControllers();
+builder.Services.AddMediatR(typeof(CreateOrderCommand));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

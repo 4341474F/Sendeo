@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text;
+using Newtonsoft.Json;
 using RabbitMQ.Client;
-using System.Text;
 
-namespace OrderAPI.EventBus
+namespace OrderService.API.EventBus
 {
     public class Producer : IMessageProducer
     {

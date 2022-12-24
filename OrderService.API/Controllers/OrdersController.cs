@@ -1,10 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using OrderService.API.Commands;
-using OrderService.API.Domain;
-using OrderService.API.Queries;
+using OrderService.Commands;
+using OrderService.Data;
+using OrderService.Domain;
+using OrderService.Queries;
 
-namespace OrderAPI.Controllers
+namespace OrderService.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -17,23 +18,25 @@ namespace OrderAPI.Controllers
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
-        // GET: api/Orders
+        // GET: api/Order
         [HttpGet]
+        //[Route("GetOrders")]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrder()
         {
             var orders = await _mediator.Send(new GetAllOrdersQuery());
             return Ok(orders);
         }
 
-        // GET: api/Orders/5
+        // GET: api/Order/5
         [HttpGet("{id}")]
+        //[Route("GetOrder")]
         public async Task<ActionResult<Order>> GetOrder(string id)
         {
             var orders = await _mediator.Send(new FindAllOrdersByIdQuery(id));
             return Ok(orders);
         }
 
-        /*// GET: api/Orders/5
+        /*// GET: api/Order/5
         [HttpGet("{dateTime}")]
         [Route("date/{dateTime:datetime:regex(\\d{4}-\\d{2}-\\d{2})}")]
         public async Task<ActionResult> GetOrdersByDateTime(DateTime dateTime)
@@ -44,30 +47,33 @@ namespace OrderAPI.Controllers
             return Ok(orders);
         }*/
 
-        // PUT: api/Orders/5
+        // PUT: api/Order/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut]
-        public async Task<IActionResult> PutOrder([FromBody] UpdateOrderCommand request)
+        //[Route("PutOrder")]
+        public async Task<IActionResult> PutOrder(UpdateOrderCommand request)
         {
             var result = await _mediator.Send(request);
-            //_messagePublisher.SendMessage(request.Orders);
+            //_messagePublisher.SendMessage(request.Order);
 
             return new JsonResult(result);
         }
 
-        //// POST: api/Orders
-        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPost]
-        //public async Task<ActionResult<OrdersDto>> PostOrder([FromBody] UpdateOrderCommand request)
-        //{
-        //    var result = await _mediator.Send(request);
-        //    _messagePublisher.SendMessage(request.Orders);
+        // POST: api/Order
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        [Route("PostOrder")]
+        public async Task<ActionResult<Order>> PostOrder( CreateOrderCommand request)
+        {
+            var result = await _mediator.Send(new CreateOrderCommand{Order = request.Order});
+            //_messagePublisher.SendMessage(request.Order);
 
-        //    return CreatedAtAction("GetOrder", new { id = request.Orders.Id }, request.Orders);
-        //}
+            return result;
+        }
 
-        // DELETE: api/Orders/5
+        // DELETE: api/Order/5
         [HttpDelete("{id}")]
+        //[Route("DeleteOrder")]
         public async Task<IActionResult> DeleteOrder(string id)
         {
             var result = await _mediator.Send(new DeleteOrderCommand() { Id = id });

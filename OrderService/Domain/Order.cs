@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace OrderService.API.Domain
+namespace OrderService.Domain
 {
     public class Order
     {

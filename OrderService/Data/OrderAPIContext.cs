@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OrderService.Domain;
 
-namespace OrderService.API.Data
+namespace OrderService.Data
 {
     public class OrderApiContext : DbContext
     {
@@ -9,7 +10,7 @@ namespace OrderService.API.Data
         {
         }
 
-        public DbSet<OrdersDto> Orders { get; set; } = default!;
+        public DbSet<Order> Orders { get; set; }
         
     }
 }

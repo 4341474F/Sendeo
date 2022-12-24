@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace OrderService.API.Commands
+namespace OrderService.Commands
 {
     public class DeleteOrderCommand : IRequest
     {

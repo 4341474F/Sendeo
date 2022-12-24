@@ -5,7 +5,6 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\OrderAPI</DockerfileContext>
     <UserSecretsId>a298f809-8b92-4ddb-b52d-c9a030306d8f</UserSecretsId>
   </PropertyGroup>
 

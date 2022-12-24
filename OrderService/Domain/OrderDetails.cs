@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using ProductAPI.Entities;
 
-namespace OrderService.API.Domain
+namespace OrderService.Domain
 {
     public class OrderDetails
     {

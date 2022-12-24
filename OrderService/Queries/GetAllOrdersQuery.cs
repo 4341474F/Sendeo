@@ -1,10 +1,11 @@
 ﻿using MediatR;
-using OrderService.API.Data;
+using OrderService.Data;
+using OrderService.Domain;
 
-namespace OrderService.API.Queries
+namespace OrderService.Queries
 {
 
-    public class GetAllOrdersQuery :IRequest<List<OrdersDto>>
+    public class GetAllOrdersQuery :IRequest<List<Order>>
     {
         
     }

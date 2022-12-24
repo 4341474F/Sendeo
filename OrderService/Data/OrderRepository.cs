@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using OrderService.API.Domain;
+using OrderService.Domain;
 
-namespace OrderService.API.Data
+namespace OrderService.Data
 {
     public class OrderRepository : IOrderRepository
     {
@@ -12,28 +12,30 @@ namespace OrderService.API.Data
             _orderContext = dbContext ?? throw new ArgumentNullException(nameof(_orderContext));
         }
 
-        public async Task<List<OrdersDto>> GetAllOrders()
+        public async Task<Order> AddAsync(Order order)
+        {
+            await _orderContext.Orders.AddAsync(order);
+            await _orderContext.SaveChangesAsync();
+            return order;
+        }
+
+        public async Task<List<Order>> GetAllOrders()
         {
             return await _orderContext.Orders.ToListAsync();
 
         }
 
-        public async Task<OrdersDto> FindById(string id)
+        public async Task<Order> FindById(string id)
         {
             return await _orderContext.Orders.FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public Task<OrdersDto> Delete(string id)
+        public Task<Order> Delete(string id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<EntityEntry<OrdersDto>> Add(OrdersDto order)
-        {
-            return await _orderContext.Orders.AddAsync(order);
-        }
-
-        public Task<List<OrdersDto>> Update()
+        public Task<List<Order>> Update()
         {
             throw new NotImplementedException();
         }

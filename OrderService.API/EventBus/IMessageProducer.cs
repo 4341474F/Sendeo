@@ -1,4 +1,4 @@
-﻿namespace OrderAPI.EventBus
+﻿namespace OrderService.API.EventBus
 {
     public interface IMessageProducer
     {

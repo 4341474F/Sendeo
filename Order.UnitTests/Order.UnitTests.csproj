@@ -24,8 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Order.Service\OrderService.API.csproj" />
-    <ProjectReference Include="..\OrderAPI\OrderService.csproj" />
+    
   </ItemGroup>
 
 </Project>
