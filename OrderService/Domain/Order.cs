@@ -18,6 +18,11 @@ namespace OrderService.Domain
 
         public DateTime OrderDate { get; set; }
 
-        //public List<OrderDetails> OrderDetails { get; set; }
+        public virtual List<OrderDetails> OrderDetails { get; set; }
+
+        public Order()
+        {
+            OrderDetails = new List<OrderDetails>();
+        }
     }
 }

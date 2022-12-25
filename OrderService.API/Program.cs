@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MediatR;
 using OrderService.Commands;
-using System.Reflection;
 using OrderService.API.EventBus;
 using OrderService.Data;
 using OrderService.Domain;

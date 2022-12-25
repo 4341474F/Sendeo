@@ -1,31 +1,24 @@
-using System.Net;
-using Microsoft.AspNetCore.Mvc.Testing;
 using FluentAssertions;
-using System.Threading.Tasks;
-using Xunit;
+using Moq;
+using OrderService.Domain;
+using OrderService.Queries;
 
 namespace Order.UnitTests
 {
-   
-    //public class OrderTest : IClassFixture<WebApplicationFactory<Program>>
-    //{ 
-    //    private readonly WebApplicationFactory<Program> _factory;
 
-    //    public OrderTest(WebApplicationFactory<Program> factory)
-    //    {
-    //        _factory = factory;
-    //    }
+    public class OrderTest 
+    {
+        [Fact]
+        public async Task GetAll_ReturnsJsonResult_WithListOfProducts()
+        {
+            var mock = new Mock<IOrderRepository>();
 
-    //    [Fact]
-    //    public async Task GetAll_ReturnsJsonResult_WithListOfProducts()
-    //    {
-    //        var client = _factory.CreateClient();
+            mock.Setup(m => m.FindById(It.Is<string>(id => id == "1"))).ReturnsAsync((OrderService.Domain.Order?)null);
 
-    //        var response = await client.GetAsync("/api/Products");
+            var handler = new GetAllOrdersQueryHandler(mock.Object);
+            var result = await handler.Handle(new GetAllOrdersQuery(), new CancellationToken());
 
-    //        response.IsSuccessStatusCode.Should().BeTrue();
-    //        response.Content.Headers.ContentType.Should().Be("application/json");
-            
-    //    }
-    //}
+            result.Should().BeNull();
+        }
+    }
 }

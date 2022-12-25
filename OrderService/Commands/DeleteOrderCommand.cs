@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using OrderService.Domain;
 
 namespace OrderService.Commands
 {

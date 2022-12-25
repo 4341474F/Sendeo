@@ -1,16 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProductAPI.Entities;
+using ProductService.Domain;
 
-namespace ProductAPI.Data
+namespace ProductService.Data
 {
-    public class ProdcutAPIContext : DbContext
+    public class ProdcutApiContext : DbContext
     {
-        public ProdcutAPIContext (DbContextOptions<ProdcutAPIContext> options)
+        public ProdcutApiContext (DbContextOptions<ProdcutApiContext> options)
             : base(options)
         {
         }
 
-        public DbSet<Product> Product { get; set; } = default!;
+        public DbSet<Product> Product { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -1,7 +1,5 @@
 ﻿using MediatR;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Logging;
-using OrderService.Data;
 using OrderService.Domain;
 
 namespace OrderService.Commands

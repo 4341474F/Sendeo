@@ -1,4 +1,4 @@
-﻿namespace ProductAPI.Entities
+﻿namespace ProductService.Domain
 {
     public class Product
     {

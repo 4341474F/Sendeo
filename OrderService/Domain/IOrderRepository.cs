@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
-
-namespace OrderService.Domain
+﻿namespace OrderService.Domain
 {
     public interface IOrderRepository
     {

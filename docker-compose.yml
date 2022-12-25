@@ -9,6 +9,13 @@ services:
     depends_on:
       - db
 
+  productapi:
+    image: ${DOCKER_REGISTRY-}productapi
+    build:
+      context: .
+      dockerfile: ProductService.API/Dockerfile
+    depends_on:
+      - db
   db:
     image: "mcr.microsoft.com/mssql/server:2022-latest"
     container_name: "sendeo-db"

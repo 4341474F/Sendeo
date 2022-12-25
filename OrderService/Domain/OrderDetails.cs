@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using ProductAPI.Entities;
+using ProductService.Domain;
 
 namespace OrderService.Domain
 {
@@ -10,9 +10,9 @@ namespace OrderService.Domain
         public string PorductId { get; set; }
 
         [ForeignKey("OrderId")]
-        public Order Order { get; set; }
+        public Order Order { get; set; } 
         [ForeignKey("PorductId")]
-        public Product Product { get; set; }
+        public Product Products { get; set; }
 
     }
 }
