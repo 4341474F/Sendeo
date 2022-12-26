@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Protocol.Core.Types;
 using ProductService.Data;
 using ProductService.Domain;
 using ProductService.Queries;

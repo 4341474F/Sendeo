@@ -20,9 +20,6 @@ namespace OrderService.Domain
 
         public virtual List<OrderDetails> OrderDetails { get; set; }
 
-        public Order()
-        {
-            OrderDetails = new List<OrderDetails>();
-        }
+       
     }
 }
