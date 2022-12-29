@@ -16,7 +16,7 @@ builder.Services.AddDbContext<ProdcutApiContext>(options =>
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddMediatR(typeof(GetAllProductsQuery));
 //builder.Services.AddMediatR(typeof(CreateProductCommand));
-
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

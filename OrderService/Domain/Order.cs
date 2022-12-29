@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using ProductService.Domain;
 
 namespace OrderService.Domain
 {
@@ -18,7 +19,7 @@ namespace OrderService.Domain
 
         public DateTime OrderDate { get; set; }
 
-        public virtual List<OrderDetails> OrderDetails { get; set; }
+        public virtual List<Product> Products { get; set; }
 
        
     }

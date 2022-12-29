@@ -18,6 +18,7 @@ builder.Services.AddScoped<IMessageProducer, Producer>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddMediatR(typeof(GetAllOrdersQuery));
 builder.Services.AddMediatR(typeof(CreateOrderCommand));
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

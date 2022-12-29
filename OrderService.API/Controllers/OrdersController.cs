@@ -23,6 +23,7 @@ namespace OrderService.API.Controllers
         public async Task<ActionResult<IEnumerable<Order>>> GetOrder()
         {
             var orders = await _mediator.Send(new GetAllOrdersQuery());
+
             return Ok(orders);
         }
 
@@ -49,8 +50,8 @@ namespace OrderService.API.Controllers
         // POST: api/Order
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Route("PostOrder")]
-        public async Task<ActionResult<Order>> PostOrder(CreateOrderCommand request)
+        [Route("CreateOrder")]
+        public async Task<ActionResult<Order>> CreateOrder(CreateOrderCommand request)
         {
             var result = await _mediator.Send(new CreateOrderCommand{Order = request.Order});
             //_messagePublisher.SendMessage(request.Order);

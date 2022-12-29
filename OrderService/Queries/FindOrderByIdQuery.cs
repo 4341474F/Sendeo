@@ -1,15 +1,16 @@
 ﻿using MediatR;
-using OrderService.Data;
+using OrderService.Domain;
 
 namespace OrderService.Queries
 {
 
-    public class FindOrderByIdQuery :IRequest<List<OrdersDto>>
+    public class FindOrderByIdQuery :IRequest<OrderDto>
     {
-        private string _id { get; set; }
+        public string Id { get; }
+
         public FindOrderByIdQuery(string id)
         {
-            _id = id;
-        }
+            Id = id;
+        }   
     }
 }

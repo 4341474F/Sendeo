@@ -1,8 +1,15 @@
 version: '3.4'
 
 services:
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+  
   orderapi:
     image: ${DOCKER_REGISTRY-}orderapi
+    container_name: "orderapi"
     build:
       context: .
       dockerfile: OrderService.API/Dockerfile
@@ -11,6 +18,7 @@ services:
 
   productapi:
     image: ${DOCKER_REGISTRY-}productapi
+    container_name: "productapi"
     build:
       context: .
       dockerfile: ProductService.API/Dockerfile

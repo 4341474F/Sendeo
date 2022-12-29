@@ -1,13 +1,23 @@
 version: '3.4'
 
 services:
+  apigateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    depends_on:
+      - orderapi
+      - productapi
+    ports:
+      - "8000:80"
+      - "8001:443"
   orderapi:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
-      - "80"
-      - "443"
+      - "5000:80"
+      - "5001:443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -16,8 +26,8 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
-      - "80"
-      - "443"
+      - "6000:80"
+      - "6001:443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
