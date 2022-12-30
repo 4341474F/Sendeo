@@ -5,12 +5,11 @@ namespace ProductService.Data
 {
     public class ProdcutApiContext : DbContext
     {
+        public DbSet<Product> Product { get; set; }
         public ProdcutApiContext (DbContextOptions<ProdcutApiContext> options)
             : base(options)
         {
         }
-
-        public DbSet<Product> Product { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

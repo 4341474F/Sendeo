@@ -9,6 +9,8 @@ namespace OrderService.Data
         public OrderRepository(OrderApiContext dbContext)
         {
             _orderContext = dbContext ?? throw new ArgumentNullException(nameof(_orderContext));
+            _orderContext.Database.EnsureCreatedAsync();
+            DbInitializers.Initialize(_orderContext);
         }
 
         public async Task<Order> AddAsync(Order order)

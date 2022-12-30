@@ -1,6 +1,6 @@
 {
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:8001"
+    "BaseUrl": "https://gateway:8001"
   },
   "Routes": [
     {
@@ -10,7 +10,7 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "ProductService.API",
+          "Host": "localhost",
           "Port": 6001
         }
       ]
@@ -22,7 +22,7 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "ProductService.API",
+          "Host": "localhost",
           "Port": 6001
         }
       ]
@@ -34,19 +34,19 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "ProductService.API",
+          "Host": "localhost",
           "Port": 6001
         }
       ]
     },
     {
       "UpstreamPathTemplate": "/gateway/orders",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DownstreamPathTemplate": "/api/orders",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "orderapi",
+          "Host": "orderservice.api",
           "Port": 5001
         }
       ]
@@ -58,26 +58,14 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "host.docker.internal",
+          "Host": "orderservice.api",
           "Port": 5001
         }
       ]
     },
-    {
-      "UpstreamPathTemplate": "/gateway/orders",
-      "UpstreamHttpMethod": [ "Post", "Put" ],
-      "DownstreamPathTemplate": "/api/orders",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
         {
-          "Host": "orderapi",
-          "Port": 5001
-        }
-      ]
-    },
-    {
       "UpstreamPathTemplate": "/gateway/customer",
-      "UpstreamHttpMethod": [ "Get" ],
+          "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DownstreamPathTemplate": "/api/customer",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
@@ -98,19 +86,6 @@
           "Port": 7001
         }
       ]
-    },
-    {
-      "UpstreamPathTemplate": "/gateway/customer",
-      "UpstreamHttpMethod": [ "Post", "Put" ],
-      "DownstreamPathTemplate": "/api/customer",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 7001
-        }
-      ]
     }
-
   ]
 }

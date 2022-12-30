@@ -9,6 +9,7 @@ namespace ProductService.Data
         public ProductRepository(ProdcutApiContext dbContext)
         {
             _productContext = dbContext ?? throw new ArgumentNullException(nameof(_productContext));
+
         }
 
         public async Task<Product> AddAsync(Product order)

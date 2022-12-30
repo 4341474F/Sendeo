@@ -1,30 +1,34 @@
 version: '3.4'
 
 services:
-  apigateway:
-    image: ${DOCKER_REGISTRY-}apigateway
-    build:
-      context: .
-      dockerfile: ApiGateway/Dockerfile
-  
-  orderapi:
-    image: ${DOCKER_REGISTRY-}orderapi
-    container_name: "orderapi"
+  orderservice.api:
+    image: ${DOCKER_REGISTRY-}orderserviceapi
     build:
       context: .
       dockerfile: OrderService.API/Dockerfile
     depends_on:
       - db
-
-  productapi:
-    image: ${DOCKER_REGISTRY-}productapi
-    container_name: "productapi"
+    ports:
+      - "5000:80"
+      - "5001:443"
+  productservice.api:
+    image: ${DOCKER_REGISTRY-}productserviceapi
     build:
       context: .
       dockerfile: ProductService.API/Dockerfile
     depends_on:
       - db
-    
+    ports:
+      - "6000:80"
+      - "6001:443"
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+    ports:
+      - "8000:80"
+      - "8001:443"
   db:
     image: "mcr.microsoft.com/mssql/server:2022-latest"
     container_name: "sendeo-db"
@@ -40,4 +44,3 @@ services:
     ports:
         - 5672:5672
         - 15672:15672
-

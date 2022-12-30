@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OrderService.Domain;
+using ProductService.Domain;
 
 namespace OrderService.Data
 {
@@ -10,7 +11,8 @@ namespace OrderService.Data
         {
         }
 
-        public DbSet<Order>? Orders { get; set; }
-        
+        public DbSet<Order>? Orders => Set<Order>();
+        public DbSet<Product>? Products => Set<Product>();
+
     }
 }

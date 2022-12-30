@@ -1,10 +1,10 @@
 ﻿using MediatR;
-using OrderService.Data;
+using OrderService.Domain;
 
 namespace OrderService.Queries
 {
 
-    public class FindAllOrdersByDateQuery :IRequest<List<OrdersDto>>
+    public class FindAllOrdersByDateQuery :IRequest<List<OrderDto>>
     {
         private DateTime dateTime;
 
