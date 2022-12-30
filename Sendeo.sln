@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Customer", "Customer", "{C3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Product", "Product", "{EDD1E3D5-1EB1-4B22-9770-DF595B8C2DF0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Customer.API", "CustomerAPI\Customer.API.csproj", "{D9BC8CE0-DA4D-43EA-A91C-586DCD045FAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerService.API", "CustomerAPI\CustomerService.API.csproj", "{D9BC8CE0-DA4D-43EA-A91C-586DCD045FAA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductService.API", "ProductService.API\ProductService.API.csproj", "{F5525814-59B4-4428-994E-D6C0C5019E10}"
 EndProject

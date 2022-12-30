@@ -21,8 +21,8 @@ namespace CustomerService.Queries
         public async Task<List<CustomerDto>> Handle(GetAllCustomersQuery request, CancellationToken cancellationToken)
         {
 
-            var orders = await _customerRepository.GetAllOrders();
-            return _mapper.Map<List<CustomerDto>>(orders);
+            var customers = await _customerRepository.GetAllCustomers();
+            return _mapper.Map<List<CustomerDto>>(customers);
         }
     }
 }

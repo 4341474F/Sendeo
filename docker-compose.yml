@@ -1,6 +1,16 @@
 version: '3.4'
 
 services:
+  customerservice.api:
+    image: ${DOCKER_REGISTRY-}customerserviceapi
+    build:
+      context: .
+      dockerfile: CustomerAPI/Dockerfile
+    depends_on:
+      - db
+    ports:
+      - "7000:80"
+      - "7001:443"
   orderservice.api:
     image: ${DOCKER_REGISTRY-}orderserviceapi
     build:
@@ -44,3 +54,4 @@ services:
     ports:
         - 5672:5672
         - 15672:15672
+

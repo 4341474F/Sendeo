@@ -1,10 +1,9 @@
 ﻿using CustomerService.Commands;
-using CustomerService.Domain;
 using CustomerService.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace OrderService.API.Controllers
+namespace Customer.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -17,58 +16,46 @@ namespace OrderService.API.Controllers
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
-        // GET: api/Order
+        // GET: api/Customer
         [HttpGet]
-        //[Route("GetOrders")]
-        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomer()
+        public async Task<ActionResult<IEnumerable<CustomerService.Domain.Customer>>> GetCustomer()
         {
             var customers = await _mediator.Send(new GetAllCustomersQuery());
 
             return Ok(customers);
         }
 
-        // GET: api/Order/5
+        // GET: api/Customer/5
         [HttpGet("{id}")]
-        //[Route("GetOrder")]
-        public async Task<ActionResult<Customer>> GetOrder(string id)
+        //[Route("GetCustomer")]
+        public async Task<ActionResult<CustomerService.Domain.Customer>> GetCustomer(string id)
         {
-            var orders = await _mediator.Send(new FindCustomerByIdQuery(id));
-            return Ok(orders);
+            var customers = await _mediator.Send(new FindCustomerByIdQuery(id));
+            return Ok(customers);
         }
 
-        /*// GET: api/Order/5
-        [HttpGet("{dateTime}")]
-        [Route("date/{dateTime:datetime:regex(\\d{4}-\\d{2}-\\d{2})}")]
-        public async Task<ActionResult> GetOrdersByDateTime(DateTime dateTime)
-        {
-            var orders = await _mediator.Send(new FindAllOrdersByDateQuery(dateTime));
-
-            //return new JsonResult(orders);    ???
-            return Ok(orders);
-        }*/
-
-        // POST: api/Order
+        // POST: api/Customer
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Route("CreateOrder")]
-        public async Task<ActionResult<Customer>> CreateOrder(CreateCustomerCommand request)
+        [Route("CreateCustomer")]
+        public async Task<ActionResult<CustomerService.Domain.Customer>> CreateCustomer(CreateCustomerCommand request)
         {
             var result = await _mediator.Send(new CreateCustomerCommand { Customer = request.Customer});
-            //_messagePublisher.SendMessage(request.Order);
+            //_messagePublisher.SendMessage(request.Customer);
 
             return result;
         }
 
-        // DELETE: api/Order/5
+        // DELETE: api/Customer/5
         [HttpDelete("{id}")]
-        //[Route("DeleteOrder")]
-        public async Task<string> DeleteOrder(DeleteCustomerCommand request, string id)
+        //[Route("DeleteCustomer")]
+        public async Task<string> DeleteCustomer(DeleteCustomerCommand request, string id)
         {
             return await _mediator.Send(new DeleteCustomerCommand(id));
             
         }
 
-        private async Task<ActionResult<Customer>> OrderExistsAsync(string id)
+        private async Task<ActionResult<CustomerService.Domain.Customer>> CustomerExistsAsync(string id)
         {
             var result =  await _mediator.Send(new FindCustomerByIdQuery(id));
             return new JsonResult(result);

@@ -1,14 +1,13 @@
 ﻿using AutoMapper;
 using CustomerService.Domain;
 
-
-namespace CustomerAPI.Mapper
+namespace Customer.API.Mapper
 {
     public class CustomerProfile:Profile
     {
         public CustomerProfile()
         {
-            CreateMap<Customer, CustomerDto>().ReverseMap();
+            CreateMap<CustomerService.Domain.Customer, CustomerDto>().ReverseMap();
             
         }
     }

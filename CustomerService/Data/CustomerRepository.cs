@@ -20,7 +20,7 @@ namespace CustomerService.Data
             return customer;
         }
 
-        public async Task<List<Customer>> GetAllOrders()
+        public async Task<List<Customer>> GetAllCustomers()
         {
             return await _customerContext.Customer.ToListAsync();
 
@@ -35,7 +35,7 @@ namespace CustomerService.Data
         {
             var request = await _customerContext.Customer.FirstOrDefaultAsync(p => p.Id == id);
             if (request?.Id == "")
-                return($"Order with {id} is not found!");
+                return($"Customer with {id} is not found!");
 
             _customerContext.Customer.Remove(request);
             await _customerContext.SaveChangesAsync();

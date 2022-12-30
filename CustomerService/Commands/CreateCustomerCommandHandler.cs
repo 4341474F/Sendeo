@@ -22,7 +22,7 @@ namespace CustomerService.Commands
         public async Task<Customer> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
         {
             _mapper.Map<Customer>(request.Customer);
-            _logger.LogInformation($"Order {request.Customer.Id} is successfully updated.");
+            _logger.LogInformation($"Customer {request.Customer.Id} is successfully updated.");
             return await _customerRepository.AddAsync(request.Customer);
         }
     }

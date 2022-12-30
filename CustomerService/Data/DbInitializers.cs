@@ -7,7 +7,7 @@ namespace CustomerService.Data
     {
         public static void Initialize(CustomerApiContext context)
         {
-            if (context.Orders.Any())
+            if (context.Customer.Any())
                 return;
             
             var customers = new List<Customer>()
