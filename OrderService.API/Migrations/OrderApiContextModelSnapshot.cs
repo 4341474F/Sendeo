@@ -27,54 +27,24 @@ namespace OrderService.API.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
+                    b.Property<string>("CustomerId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("OrderNo")
+                    b.Property<string>("OrderId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone")
+                    b.Property<string>("ProductId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("OrderService.Domain.OrderDetails", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("OrderNo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ProductId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderNo");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("OrderDetails");
                 });
 
             modelBuilder.Entity("ProductService.Domain.Product", b =>
@@ -98,6 +68,9 @@ namespace OrderService.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("OrderId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
@@ -106,31 +79,21 @@ namespace OrderService.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Product");
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("OrderService.Domain.OrderDetails", b =>
+            modelBuilder.Entity("ProductService.Domain.Product", b =>
                 {
-                    b.HasOne("OrderService.Domain.Order", "Order")
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("OrderNo")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ProductService.Domain.Product", "Products")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Products");
+                    b.HasOne("OrderService.Domain.Order", null)
+                        .WithMany("Products")
+                        .HasForeignKey("OrderId");
                 });
 
             modelBuilder.Entity("OrderService.Domain.Order", b =>
                 {
-                    b.Navigation("OrderDetails");
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

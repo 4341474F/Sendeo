@@ -82,11 +82,7 @@ namespace Order.UnitTests
 
             result.Result.Should().BeOfType<OrderService.Domain.Order>();
             result.Result.Id.Should().Be("1");
-            result.Result.Address.Should().Be("Adress");
-            result.Result.Email.Should().Be("order@sendeo.com");
-            result.Result.Name.Should().Be("Order1");
-            result.Result.OrderNo.Should().Be("1");
-            result.Result.Phone.Should().Be("1234567");
+            result.Result.OrderId.Should().Be("1");
             result.Result.Products.Should().AllBeOfType<Product>();
         }
 
@@ -95,12 +91,8 @@ namespace Order.UnitTests
             var order = new OrderService.Domain.Order()
             {
                 Id = "1",
-                Address = "Adress",
-                Email = "order@sendeo.com",
-                Name = "Order1",
                 OrderDate = new DateTime(),
-                OrderNo = "1",
-                Phone = "1234567",
+                OrderId = "1",
                 Products = new List<Product>() {new() {Name = "Product", Id = "1"}}
             };
             return order;

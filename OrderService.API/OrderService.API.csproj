@@ -35,10 +35,6 @@
   <ItemGroup>
     <ProjectReference Include="..\OrderService\OrderService.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
   <PropertyGroup>
     <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
