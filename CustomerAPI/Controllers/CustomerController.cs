@@ -3,6 +3,7 @@ using CustomerService.Commands;
 using CustomerService.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using OrderService.API.EventBus;
 
 namespace Customer.API.Controllers
 {
@@ -12,6 +13,7 @@ namespace Customer.API.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
+        
 
         public CustomerController(IMediator mediator, IMapper mapper)
         {

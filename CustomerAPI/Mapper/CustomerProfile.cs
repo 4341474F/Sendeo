@@ -10,8 +10,8 @@ namespace CustomerService.API.Mapper
         public CustomerProfile()
         {
             CreateMap<Domain.Customer, CustomerDto>().ReverseMap();
-            CreateMap<Domain.Customer, List<Order>>().ReverseMap();
-            CreateMap<Order, List<Product>>().ReverseMap();
+            CreateMap<CustomerDto, OrderDto>().ReverseMap();
+            CreateMap<Order, ProductDto>().ReverseMap();
             
         }
     }

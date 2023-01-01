@@ -2,6 +2,7 @@
 using AutoMapper;
 using Microsoft.Extensions.Logging;
 using CustomerService.Domain;
+using OrderService.Queries;
 
 namespace CustomerService.Queries
 {

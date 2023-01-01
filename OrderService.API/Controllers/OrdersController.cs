@@ -2,6 +2,7 @@
 using System.Runtime.Serialization;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using OrderService.API.EventBus;
 using OrderService.Commands;
 using OrderService.Domain;
 using OrderService.Queries;
@@ -13,6 +14,7 @@ namespace OrderService.API.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IMessageProducer _messageProducer;
 
         public OrdersController(IMediator mediator)
         {
@@ -39,13 +41,12 @@ namespace OrderService.API.Controllers
         }
 
         // GET: api/Order/5
-        [HttpGet("{date:datetime}")]
+        [HttpGet("{*date:datetime}")]
         
         public async Task<ActionResult> GetOrdersByDateTime(DateTime date)
         {
             var orders = await _mediator.Send(new FindAllOrdersByDateQuery(date));
 
-            //return new JsonResult(orders);    ???
             return Ok(orders);
         }
 
@@ -56,7 +57,7 @@ namespace OrderService.API.Controllers
         public async Task<ActionResult<Order>> CreateOrder(CreateOrderCommand request)
         {
             var result = await _mediator.Send(new CreateOrderCommand{Order = request.Order});
-            //_messagePublisher.SendMessage(request.Order);
+            _messageProducer.SendMessage(request.Order);
 
             return result;
         }

@@ -23,7 +23,6 @@ namespace CustomerService.Data
 
         public async Task<List<Customer>> GetAllCustomers()
         {
-            
             return await _customerContext.Customer.ToListAsync();
         }
 

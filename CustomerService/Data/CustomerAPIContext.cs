@@ -22,7 +22,7 @@ namespace CustomerService.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Customer>().HasData(
+           modelBuilder.Entity<Customer>().HasData(
                 new Customer
                 {
                     Id = "1",

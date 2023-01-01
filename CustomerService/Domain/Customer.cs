@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore;
 using OrderService.Domain;
-using ProductService.Domain;
 
 namespace CustomerService.Domain
 {
