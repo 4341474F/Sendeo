@@ -132,7 +132,7 @@ First enter the root directory Sendeo, there is a docker-compse.yaml file, open 
 
 * DB Relation Diagram
 
-   ![image](https://user-images.githubusercontent.com/19145921/210180001-c4db4ad9-23fc-47cf-9a97-4b87614a7c21.png)
+   ![image](https://user-images.githubusercontent.com/19145921/210183434-f573cb23-93cf-4bcf-9c74-2817e04eba5e.png)
    
    Sendeo project uses EfCore and thus initial creation of Sendeo DB and tables Customer, Order and Product tables are creation is guarantied. If you ran into trouble you can use these commands for these creation and seeding data procesess.
    
