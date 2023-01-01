@@ -39,7 +39,7 @@ namespace OrderService.API.Controllers
         }
 
         // GET: api/Order/5
-        [HttpGet("{date:dateTime}")]
+        [HttpGet("{date:datetime}")]
         
         public async Task<ActionResult> GetOrdersByDateTime(DateTime date)
         {

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CustomerService.API.Migrations
 {
     [DbContext(typeof(CustomerApiContext))]
-    [Migration("20230101173805_InitialCreate")]
+    [Migration("20230101204221_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -96,10 +96,6 @@ namespace CustomerService.API.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ProductId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
@@ -111,22 +107,19 @@ namespace CustomerService.API.Migrations
                         {
                             Id = "1",
                             CustomerId = "1",
-                            OrderDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ProductId = "1"
+                            OrderDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = "2",
                             CustomerId = "2",
-                            OrderDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ProductId = "2"
+                            OrderDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = "3",
                             CustomerId = "3",
-                            OrderDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ProductId = "3"
+                            OrderDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -152,6 +145,7 @@ namespace CustomerService.API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OrderId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("Price")
@@ -174,6 +168,7 @@ namespace CustomerService.API.Migrations
                             Description = "Desc1",
                             ImageFile = "null",
                             Name = "Product1",
+                            OrderId = "1",
                             Price = 10m,
                             Stock = 2
                         },
@@ -184,6 +179,7 @@ namespace CustomerService.API.Migrations
                             Description = "Desc2",
                             ImageFile = "null",
                             Name = "Product2",
+                            OrderId = "2",
                             Price = 20m,
                             Stock = 1
                         },
@@ -194,6 +190,7 @@ namespace CustomerService.API.Migrations
                             Description = "Desc3",
                             ImageFile = "null",
                             Name = "Product3",
+                            OrderId = "3",
                             Price = 100m,
                             Stock = 2
                         });
@@ -212,7 +209,9 @@ namespace CustomerService.API.Migrations
                 {
                     b.HasOne("OrderService.Domain.Order", null)
                         .WithMany("Products")
-                        .HasForeignKey("OrderId");
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CustomerService.Domain.Customer", b =>

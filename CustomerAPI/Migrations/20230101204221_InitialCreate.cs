@@ -35,7 +35,6 @@ namespace CustomerService.API.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProductId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -54,13 +53,13 @@ namespace CustomerService.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    OrderId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImageFile = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Stock = table.Column<int>(type: "int", nullable: false),
-                    OrderId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    Stock = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -69,7 +68,8 @@ namespace CustomerService.API.Migrations
                         name: "FK_Product_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -83,23 +83,23 @@ namespace CustomerService.API.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Orders",
+                columns: new[] { "Id", "CustomerId", "OrderDate" },
+                values: new object[,]
+                {
+                    { "1", "1", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { "2", "2", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { "3", "3", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Product",
                 columns: new[] { "Id", "Category", "Description", "ImageFile", "Name", "OrderId", "Price", "Stock" },
                 values: new object[,]
                 {
-                    { "1", "Category1", "Desc1", "null", "Product1", null, 10m, 2 },
-                    { "2", "Category1", "Desc2", "null", "Product2", null, 20m, 1 },
-                    { "3", "Category2", "Desc3", "null", "Product3", null, 100m, 2 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Orders",
-                columns: new[] { "Id", "CustomerId", "OrderDate", "ProductId" },
-                values: new object[,]
-                {
-                    { "1", "1", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "1" },
-                    { "2", "2", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "2" },
-                    { "3", "3", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "3" }
+                    { "1", "Category1", "Desc1", "null", "Product1", "1", 10m, 2 },
+                    { "2", "Category1", "Desc2", "null", "Product2", "2", 20m, 1 },
+                    { "3", "Category2", "Desc3", "null", "Product3", "3", 100m, 2 }
                 });
 
             migrationBuilder.CreateIndex(

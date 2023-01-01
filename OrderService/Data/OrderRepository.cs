@@ -28,7 +28,12 @@ namespace OrderService.Data
 
         public async Task<Order> FindById(string id)
         {
-            return await _orderContext.Orders.FirstOrDefaultAsync(p => p.Id == id);
+            return await _orderContext.Orders.FirstOrDefaultAsync(o => o.Id == id);
+        }
+
+        public async Task<Order> FindByDate(DateTime date)
+        {
+            return await _orderContext.Orders.FirstOrDefaultAsync(o => o.OrderDate == date);
         }
 
         public async Task<string> DeleteAsync(string Id)

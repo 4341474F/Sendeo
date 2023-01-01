@@ -6,11 +6,11 @@ namespace OrderService.Queries
 
     public class FindAllOrdersByDateQuery :IRequest<List<OrderDto>>
     {
-        private DateTime dateTime;
+        public DateTime Date { get; }
 
-        public FindAllOrdersByDateQuery(DateTime dateTime)
+        public FindAllOrdersByDateQuery(DateTime date)
         {
-            this.dateTime = dateTime;
+            Date = date;
         }
         
     }

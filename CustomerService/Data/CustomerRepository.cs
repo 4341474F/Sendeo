@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using CustomerService.Domain;
 
 namespace CustomerService.Data
@@ -22,8 +23,8 @@ namespace CustomerService.Data
 
         public async Task<List<Customer>> GetAllCustomers()
         {
+            
             return await _customerContext.Customer.ToListAsync();
-
         }
 
         public async Task<Customer> FindById(string id)

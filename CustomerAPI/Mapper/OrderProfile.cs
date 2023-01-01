@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using CustomerService.Domain;
+using OrderService.Domain;
+using ProductService.Domain;
 
 namespace Customer.API.Mapper
 {
@@ -8,6 +10,8 @@ namespace Customer.API.Mapper
         public CustomerProfile()
         {
             CreateMap<CustomerService.Domain.Customer, CustomerDto>().ReverseMap();
+            CreateMap<CustomerService.Domain.Customer, List<Order>>().ReverseMap();
+            CreateMap<Order, List<Product>>().ReverseMap();
             
         }
     }

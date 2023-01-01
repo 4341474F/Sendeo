@@ -5,10 +5,6 @@ using OrderService.API.EventBus;
 using OrderService.Data;
 using OrderService.Domain;
 using OrderService.Queries;
-using Microsoft.Extensions.Hosting;
-using ProductService.Data;
-using ProductService.Queries;
-using DbInitializers = OrderService.Data.DbInitializers;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();

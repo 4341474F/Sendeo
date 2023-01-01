@@ -1,4 +1,5 @@
-﻿using CustomerService.Commands;
+﻿using AutoMapper;
+using CustomerService.Commands;
 using CustomerService.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -10,9 +11,11 @@ namespace Customer.API.Controllers
     public class CustomerController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
 
-        public CustomerController(IMediator mediator)
+        public CustomerController(IMediator mediator, IMapper mapper)
         {
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
@@ -20,6 +23,7 @@ namespace Customer.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CustomerService.Domain.Customer>>> GetCustomer()
         {
+            
             var customers = await _mediator.Send(new GetAllCustomersQuery());
 
             return Ok(customers);

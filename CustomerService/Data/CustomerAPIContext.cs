@@ -56,22 +56,22 @@ namespace CustomerService.Data
                 {
                     Id = "1",
                     CustomerId = "1",
-                    ProductId = "1",
                     OrderDate = new DateTime(),
+                    
                 },
                 new Order
                 {
                     Id = "2",
                     CustomerId = "2",
-                    ProductId = "2",
                     OrderDate = new DateTime(),
+                    
                 },
                 new Order
                 {
                     Id = "3",
                     CustomerId = "3",
-                    ProductId = "3",
                     OrderDate = new DateTime(),
+                   
                 }
             );
 
@@ -79,6 +79,7 @@ namespace CustomerService.Data
                 new Product
                 {
                     Id = "1",
+                    OrderId = "1",
                     Name = "Product1",
                     Category = "Category1",
                     Description = "Desc1",
@@ -89,6 +90,7 @@ namespace CustomerService.Data
                 new Product
                 {
                     Id = "2",
+                    OrderId = "2",
                     Name = "Product2",
                     Category = "Category1",
                     Description = "Desc2",
@@ -99,6 +101,7 @@ namespace CustomerService.Data
                 new Product
                 {
                     Id = "3",
+                    OrderId = "3",
                     Name = "Product3",
                     Category = "Category2",
                     Description = "Desc3",
