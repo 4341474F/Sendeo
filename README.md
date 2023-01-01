@@ -130,4 +130,11 @@ First enter the root directory Sendeo, there is a docker-compse.yaml file, open 
 
 ## Tech Stack
 
-![image](https://user-images.githubusercontent.com/19145921/210165120-c0480835-04ba-4ded-b280-0646b48511c7.png)
+* DB Relation Diagram
+
+   ![image](https://user-images.githubusercontent.com/19145921/210180001-c4db4ad9-23fc-47cf-9a97-4b87614a7c21.png)
+
+* MicroService Architecture
+   
+   ![image](https://user-images.githubusercontent.com/19145921/210165120-c0480835-04ba-4ded-b280-0646b48511c7.png)
+   
