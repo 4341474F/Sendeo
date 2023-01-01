@@ -7,6 +7,7 @@ using OrderService.Domain;
 using OrderService.Queries;
 using Microsoft.Extensions.Hosting;
 using ProductService.Data;
+using ProductService.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
@@ -19,7 +20,10 @@ builder.Services.AddDbContext<OrderApiContext>(options =>
 builder.Services.AddScoped<IMessageProducer, Producer>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddMediatR(typeof(GetAllOrdersQuery));
+builder.Services.AddMediatR(typeof(FindOrderByIdQuery));
+builder.Services.AddMediatR(typeof(FindAllOrdersByDateQuery));
 builder.Services.AddMediatR(typeof(CreateOrderCommand));
+builder.Services.AddMediatR(typeof(DeleteOrderCommand));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddEndpointsApiExplorer();

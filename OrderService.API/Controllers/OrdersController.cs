@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Commands;
 using OrderService.Domain;
@@ -36,16 +38,16 @@ namespace OrderService.API.Controllers
             return Ok(orders);
         }
 
-        /*// GET: api/Order/5
-        [HttpGet("{dateTime}")]
-        [Route("date/{dateTime:datetime:regex(\\d{4}-\\d{2}-\\d{2})}")]
-        public async Task<ActionResult> GetOrdersByDateTime(DateTime dateTime)
+        // GET: api/Order/5
+        [HttpGet("{date:dateTime}")]
+        
+        public async Task<ActionResult> GetOrdersByDateTime(DateTime date)
         {
-            var orders = await _mediator.Send(new FindAllOrdersByDateQuery(dateTime));
+            var orders = await _mediator.Send(new FindAllOrdersByDateQuery(date));
 
             //return new JsonResult(orders);    ???
             return Ok(orders);
-        }*/
+        }
 
         // POST: api/Order
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

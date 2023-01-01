@@ -82,7 +82,6 @@ namespace Order.UnitTests
 
             result.Result.Should().BeOfType<OrderService.Domain.Order>();
             result.Result.Id.Should().Be("1");
-            result.Result.OrderId.Should().Be("1");
             result.Result.Products.Should().AllBeOfType<Product>();
         }
 
@@ -92,7 +91,6 @@ namespace Order.UnitTests
             {
                 Id = "1",
                 OrderDate = new DateTime(),
-                OrderId = "1",
                 Products = new List<Product>() {new() {Name = "Product", Id = "1"}}
             };
             return order;

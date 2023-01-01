@@ -14,10 +14,11 @@ namespace CustomerService.Data
             {
                 new Customer()
                 {
-                    Id = "Order.1",
+                    Id = "1",
                     Address = "Adress.1",
                     Email = "user1@sendeo.com",
-                    Name = "Sendeo Order 1",
+                    Name = "User 1 Name",
+                    LastName = "User 1 LastName",
                     Phone = "1234567",
                 },
                 new Customer()
@@ -25,7 +26,8 @@ namespace CustomerService.Data
                     Id = "Order.2",
                     Address = "Adress.2",
                     Email = "user1@sendeo.com",
-                    Name = "Sendeo Order 2",
+                    Name = "User 2 Name",
+                    LastName = "User 2 LastName",
                     Phone = "1234567",
                     
                 },
@@ -34,7 +36,8 @@ namespace CustomerService.Data
                     Id = "Order.3",
                     Address = "Adress.3",
                     Email = "user1@sendeo.com",
-                    Name = "Sendeo Order 3",
+                    Name = "User 3 Name",
+                    LastName = "User 3 LastName",
                     Phone = "1234567",
                 },
                 new Customer()
@@ -42,7 +45,8 @@ namespace CustomerService.Data
                     Id = "Order.4",
                     Address = "Adress.4",
                     Email = "user1@sendeo.com",
-                    Name = "Sendeo Order 4",
+                    Name = "User 4 Name",
+                    LastName = "User 4 LastName",
                     Phone = "1234567",
                     
                 },
@@ -51,7 +55,8 @@ namespace CustomerService.Data
                     Id = "Order.5",
                     Address = "Adress.5",
                     Email = "user1@sendeo.com",
-                    Name = "Sendeo Order 5",
+                    Name = "User 5 Name",
+                    LastName = "User 5 LastName",
                     Phone = "1234567",
                 },
 
