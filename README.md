@@ -27,4 +27,18 @@ First enter the root directory Sendeo, there is a docker-compse.yaml file, open 
   * CustomerService.API : Container running ASP.NET Core Web API using .Net 6.0 inside of it responsible for Customer microservice
   * OrderService.API    : Container running ASP.NET Core Web API using .Net 6.0 inside of it responsible for Order microservice
   * ProductService.API  : Container running ASP.NET Core Web API using .Net 6.0 inside of it responsible for Product microservice
+
+   As you can see, this project is REST APIs basically perform routing operations on Customer, Product and Order microservices.
+   These are the main
    
+      Route Customer APIs with /gateway/Catalog path
+      Route Product APIs with /gateway/Product path
+      Route Order APIs with gateway//Order path
+
+
+
+
+
+## Tech Stack
+
+![image](https://user-images.githubusercontent.com/19145921/210165120-c0480835-04ba-4ded-b280-0646b48511c7.png)
