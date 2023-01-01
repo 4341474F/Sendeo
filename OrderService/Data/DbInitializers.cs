@@ -1,4 +1,5 @@
-﻿using OrderService.Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using OrderService.Domain;
 using ProductService.Domain;
 
 namespace OrderService.Data

@@ -14,11 +14,29 @@ namespace ProductService.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>().HasData(
-                new Product() { Id = Guid.NewGuid().ToString(), Category = "Category1", Description = "Description1", ImageFile = "ImageFile1", Name = "Name1", Price = 100 },
-                new Product() { Id = Guid.NewGuid().ToString(), Category = "Category2", Description = "Description2", ImageFile = "ImageFile1", Name = "Name1", Price = 100 },
-                new Product() { Id = Guid.NewGuid().ToString(), Category = "Category1", Description = "Description3", ImageFile = "ImageFile1", Name = "Name1", Price = 200 },
-                new Product() { Id = Guid.NewGuid().ToString(), Category = "Category2", Description = "Description4", ImageFile = "ImageFile1", Name = "Name1", Price = 10 },
-                new Product() { Id = Guid.NewGuid().ToString(), Category = "Category3", Description = "Description5", ImageFile = "ImageFile1", Name = "Name1", Price = 250 }
+                new List<Product>
+                {
+                    new()
+                    {
+                        Id = "1",
+                        Name = "Product 1",
+                        Category = "Category 1",
+                        Description = "Desc 1",
+                        ImageFile = null,
+                        Price = 10,
+                        Stock = 2
+                    },
+                    new()
+                    {
+                        Id = "2",
+                        Name = "Product 2",
+                        Category = "Category 2",
+                        Description = "Desc 2",
+                        ImageFile = null,
+                        Price = 30,
+                        Stock = 1
+                    }
+                }
             );
         }
     }

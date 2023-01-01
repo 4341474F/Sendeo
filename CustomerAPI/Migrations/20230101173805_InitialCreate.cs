@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace CustomerService.API.Migrations
 {
     /// <inheritdoc />
@@ -33,7 +35,6 @@ namespace CustomerService.API.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    OrderId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProductId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -69,6 +70,36 @@ namespace CustomerService.API.Migrations
                         column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.InsertData(
+                table: "Customer",
+                columns: new[] { "Id", "Address", "Email", "LastName", "Name", "Phone" },
+                values: new object[,]
+                {
+                    { "1", "Address1", "cust1@sendeo.com", "Doe", "John", "1234567" },
+                    { "2", "Address1", "lebron@sendeo.com", "James", "Lebron", "1234567" },
+                    { "3", "Address1", "cagatay@sendeo.com", "ÇELİK", "Çağatay", "1234567" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Product",
+                columns: new[] { "Id", "Category", "Description", "ImageFile", "Name", "OrderId", "Price", "Stock" },
+                values: new object[,]
+                {
+                    { "1", "Category1", "Desc1", "null", "Product1", null, 10m, 2 },
+                    { "2", "Category1", "Desc2", "null", "Product2", null, 20m, 1 },
+                    { "3", "Category2", "Desc3", "null", "Product3", null, 100m, 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Orders",
+                columns: new[] { "Id", "CustomerId", "OrderDate", "ProductId" },
+                values: new object[,]
+                {
+                    { "1", "1", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "1" },
+                    { "2", "2", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "2" },
+                    { "3", "3", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "3" }
                 });
 
             migrationBuilder.CreateIndex(

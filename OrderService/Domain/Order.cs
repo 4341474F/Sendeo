@@ -5,6 +5,7 @@ namespace OrderService.Domain
 {
     public class Order
     {
+        [Key]
         public string Id { get; set; }
         public string CustomerId { get; set; }
         public string ProductId { get; set; }

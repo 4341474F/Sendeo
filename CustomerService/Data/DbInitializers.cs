@@ -21,7 +21,7 @@ namespace CustomerService.Data
                     Name = "User 1 Name",
                     LastName = "User 1 LastName",
                     Phone = "1234567",
-                    Orders = new List<Order>() { new() { CustomerId = "1", Id = "1", OrderDate = new DateTime(), ProductId = "1", Products = new()
+                    Orders = new List<Order>() { new() { CustomerId = "1", Id = "1", OrderDate = new DateTime(), ProductId = "1", Products = new List<Product>
                         {
                             new ()
                             {
@@ -41,7 +41,7 @@ namespace CustomerService.Data
                     Name = "User 2 Name",
                     LastName = "User 2 LastName",
                     Phone = "1234567",
-                    Orders = new List<Order>() { new() {CustomerId = "2", Id = "2", OrderDate = new DateTime(), ProductId = "2", Products = new()
+                    Orders = new List<Order>() { new() {CustomerId = "2", Id = "2", OrderDate = new DateTime(), ProductId = "2", Products = new List<Product>
                         {
                             new ()
                             {
@@ -61,7 +61,7 @@ namespace CustomerService.Data
                     Name = "User 3 Name",
                     LastName = "User 3 LastName",
                     Phone = "1234567",
-                    Orders = new List<Order>() { new() {CustomerId = "3", Id = "3", OrderDate = new DateTime(), ProductId = "2", Products = new()
+                    Orders = new List<Order>() { new() {CustomerId = "3", Id = "3", OrderDate = new DateTime(), ProductId = "2", Products = new List<Product>
                         {
                             new ()
                             {
@@ -81,7 +81,7 @@ namespace CustomerService.Data
                     Name = "User 4 Name",
                     LastName = "User 4 LastName",
                     Phone = "1234567",
-                    Orders = new List<Order>() { new() {CustomerId = "4", Id = "4", OrderDate = new DateTime(), ProductId = "3", Products = new()
+                    Orders = new List<Order>() { new() {CustomerId = "4", Id = "4", OrderDate = new DateTime(), ProductId = "3", Products = new List<Product>
                         {
                             new ()
                             {
@@ -102,7 +102,7 @@ namespace CustomerService.Data
                     Name = "User 5 Name",
                     LastName = "User 5 LastName",
                     Phone = "1234567",
-                    Orders = new List<Order>() { new() {CustomerId = "5", Id = "5", OrderDate = new DateTime(), ProductId = "3", Products = new()
+                    Orders = new List<Order>() { new() {CustomerId = "5", Id = "5", OrderDate = new DateTime(), ProductId = "3", Products = new List<Product>
                         {
                             new ()
                             {

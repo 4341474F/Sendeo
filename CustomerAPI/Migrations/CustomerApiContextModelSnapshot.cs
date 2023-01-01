@@ -50,6 +50,35 @@ namespace CustomerService.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customer");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            Address = "Address1",
+                            Email = "cust1@sendeo.com",
+                            LastName = "Doe",
+                            Name = "John",
+                            Phone = "1234567"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            Address = "Address1",
+                            Email = "lebron@sendeo.com",
+                            LastName = "James",
+                            Name = "Lebron",
+                            Phone = "1234567"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            Address = "Address1",
+                            Email = "cagatay@sendeo.com",
+                            LastName = "ÇELİK",
+                            Name = "Çağatay",
+                            Phone = "1234567"
+                        });
                 });
 
             modelBuilder.Entity("OrderService.Domain.Order", b =>
@@ -64,10 +93,6 @@ namespace CustomerService.API.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("OrderId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ProductId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -77,6 +102,29 @@ namespace CustomerService.API.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            CustomerId = "1",
+                            OrderDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = "1"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            CustomerId = "2",
+                            OrderDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = "2"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            CustomerId = "3",
+                            OrderDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductId = "3"
+                        });
                 });
 
             modelBuilder.Entity("ProductService.Domain.Product", b =>
@@ -114,6 +162,38 @@ namespace CustomerService.API.Migrations
                     b.HasIndex("OrderId");
 
                     b.ToTable("Product");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            Category = "Category1",
+                            Description = "Desc1",
+                            ImageFile = "null",
+                            Name = "Product1",
+                            Price = 10m,
+                            Stock = 2
+                        },
+                        new
+                        {
+                            Id = "2",
+                            Category = "Category1",
+                            Description = "Desc2",
+                            ImageFile = "null",
+                            Name = "Product2",
+                            Price = 20m,
+                            Stock = 1
+                        },
+                        new
+                        {
+                            Id = "3",
+                            Category = "Category2",
+                            Description = "Desc3",
+                            ImageFile = "null",
+                            Name = "Product3",
+                            Price = 100m,
+                            Stock = 2
+                        });
                 });
 
             modelBuilder.Entity("OrderService.Domain.Order", b =>
