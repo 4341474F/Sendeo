@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using CustomerService.Domain;
 using Microsoft.EntityFrameworkCore.Internal;
 using OrderService.Domain;
+using OrderService.Queries;
 using DbContext = Microsoft.EntityFrameworkCore.DbContext;
 using ProductService.Domain;
 
@@ -25,6 +26,7 @@ namespace CustomerService.Data
                 new Customer
                 {
                     Id = "1",
+                    OrderId = "1",
                     Name = "John",
                     LastName = "Doe",
                     Phone = "1234567",
@@ -34,6 +36,7 @@ namespace CustomerService.Data
                 new Customer
                 {
                     Id = "2",
+                    OrderId = "2",
                     Name = "Lebron",
                     LastName = "James",
                     Phone = "1234567",
@@ -43,6 +46,7 @@ namespace CustomerService.Data
                 new Customer
                 {
                     Id = "3",
+                    OrderId = "3",
                     Name = "Çağatay",
                     LastName = "ÇELİK",
                     Phone = "1234567",

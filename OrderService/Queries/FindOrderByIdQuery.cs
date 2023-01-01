@@ -11,6 +11,11 @@ namespace OrderService.Queries
         public FindOrderByIdQuery(string id)
         {
             Id = id;
-        }   
+        }
+
+        public static implicit operator List<object>(FindOrderByIdQuery v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

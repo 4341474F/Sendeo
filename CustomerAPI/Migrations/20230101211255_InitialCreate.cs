@@ -18,6 +18,7 @@ namespace CustomerService.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    OrderId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -74,12 +75,12 @@ namespace CustomerService.API.Migrations
 
             migrationBuilder.InsertData(
                 table: "Customer",
-                columns: new[] { "Id", "Address", "Email", "LastName", "Name", "Phone" },
+                columns: new[] { "Id", "Address", "Email", "LastName", "Name", "OrderId", "Phone" },
                 values: new object[,]
                 {
-                    { "1", "Address1", "cust1@sendeo.com", "Doe", "John", "1234567" },
-                    { "2", "Address1", "lebron@sendeo.com", "James", "Lebron", "1234567" },
-                    { "3", "Address1", "cagatay@sendeo.com", "ÇELİK", "Çağatay", "1234567" }
+                    { "1", "Address1", "cust1@sendeo.com", "Doe", "John", "1", "1234567" },
+                    { "2", "Address1", "lebron@sendeo.com", "James", "Lebron", "2", "1234567" },
+                    { "3", "Address1", "cagatay@sendeo.com", "ÇELİK", "Çağatay", "3", "1234567" }
                 });
 
             migrationBuilder.InsertData(

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CustomerService.API.Migrations
 {
     [DbContext(typeof(CustomerApiContext))]
-    [Migration("20230101204221_InitialCreate")]
+    [Migration("20230101211255_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -46,6 +46,10 @@ namespace CustomerService.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("OrderId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -62,6 +66,7 @@ namespace CustomerService.API.Migrations
                             Email = "cust1@sendeo.com",
                             LastName = "Doe",
                             Name = "John",
+                            OrderId = "1",
                             Phone = "1234567"
                         },
                         new
@@ -71,6 +76,7 @@ namespace CustomerService.API.Migrations
                             Email = "lebron@sendeo.com",
                             LastName = "James",
                             Name = "Lebron",
+                            OrderId = "2",
                             Phone = "1234567"
                         },
                         new
@@ -80,6 +86,7 @@ namespace CustomerService.API.Migrations
                             Email = "cagatay@sendeo.com",
                             LastName = "ÇELİK",
                             Name = "Çağatay",
+                            OrderId = "3",
                             Phone = "1234567"
                         });
                 });

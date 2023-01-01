@@ -9,6 +9,7 @@ namespace CustomerService.Domain
     {
         [Key]
         public string Id { get; set; }
+        public string OrderId { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
