@@ -55,3 +55,10 @@ services:
         - 5672:5672
         - 15672:15672
 
+  consumer:
+    image: ${DOCKER_REGISTRY-}consumer
+    build:
+      context: .
+      dockerfile: Consumer/Dockerfile
+    depends_on:
+      - rabbitmq
