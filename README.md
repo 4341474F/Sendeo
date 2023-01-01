@@ -29,13 +29,103 @@ First enter the root directory Sendeo, there is a docker-compse.yaml file, open 
   * ProductService.API  : Container running ASP.NET Core Web API using .Net 6.0 inside of it responsible for Product microservice
 
    As you can see, this project is REST APIs basically perform routing operations on Customer, Product and Order microservices.
-   These are the main
-   
-      Route Customer APIs with /gateway/Catalog path
-      Route Product APIs with /gateway/Product path
-      Route Order APIs with gateway//Order path
+   These are the main routes you can use whic cen be seen in our ocelot.json file:
+      
+      Route Customer APIs with /gateway/Customer path (http://host.docker.internal:8000/gateway/orders)
+      Route Product APIs with /gateway/Product path (http://host.docker.internal:8000/gateway/customer)
+      Route Order APIs with gateway//Order path (http://host.docker.internal:8000/gateway/orders)
 
-
+      {
+        "GlobalConfiguration": {
+          "BaseUrl": "https://gateway:8001"
+        },
+        "Routes": [
+          {
+            "UpstreamPathTemplate": "/gateway/product",
+            "UpstreamHttpMethod": [ "Get" ],
+            "DownstreamPathTemplate": "/api/product",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+              {
+                "Host": "localhost",
+                "Port": 6001
+              }
+            ]
+          },
+          {
+            "UpstreamPathTemplate": "/gateway/product/{id}",
+            "UpstreamHttpMethod": [ "Get", "Delete" ],
+            "DownstreamPathTemplate": "/api/product/{id}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+              {
+                "Host": "localhost",
+                "Port": 6001
+              }
+            ]
+          },
+          {
+            "UpstreamPathTemplate": "/gateway/product",
+            "UpstreamHttpMethod": [ "Post", "Put" ],
+            "DownstreamPathTemplate": "/api/product",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+              {
+                "Host": "localhost",
+                "Port": 6001
+              }
+            ]
+          },
+          {
+            "UpstreamPathTemplate": "/gateway/orders",
+            "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+            "DownstreamPathTemplate": "/api/orders",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+              {
+                "Host": "orderservice.api",
+                "Port": 5001
+              }
+            ]
+          },
+          {
+            "UpstreamPathTemplate": "/gateway/orders/{id}",
+            "UpstreamHttpMethod": [ "Get", "Delete" ],
+            "DownstreamPathTemplate": "/api/orders/{id}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+              {
+                "Host": "orderservice.api",
+                "Port": 5001
+              }
+            ]
+          },
+              {
+            "UpstreamPathTemplate": "/gateway/customer",
+                "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+            "DownstreamPathTemplate": "/api/customer",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+              {
+                "Host": "localhost",
+                "Port": 7001
+              }
+            ]
+          },
+          {
+            "UpstreamPathTemplate": "/gateway/customer/{id}",
+            "UpstreamHttpMethod": [ "Get", "Delete" ],
+            "DownstreamPathTemplate": "/api/customer/{id}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+              {
+                "Host": "localhost",
+                "Port": 7001
+              }
+            ]
+          }
+        ]
+      }
 
 
 
