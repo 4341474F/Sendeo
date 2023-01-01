@@ -14,33 +14,43 @@ namespace OrderService.Data
             {
                 new Order()
                 {
-                    Id = "Order.1",
+                    Id = "1",
+                    CustomerId = "1",
+                    ProductId = "1",
                     OrderDate = new DateTime(),
-                    Products = new List<Product>() {new() {Name = "Product", Id = "1"}}
+                    //Products = new List<Product>() {new() {Name = "Product", Id = "1"}}
                 },
                 new Order()
                 {
-                    Id = "Order.2",
+                    Id = "2",
+                    CustomerId = "2",
+                    ProductId = "1",
                     OrderDate = new DateTime(),
-                    Products = new List<Product>() {new() {Name = "Product", Id = "2"}}
+                    //Products = new List<Product>() {new() {Name = "Product", Id = "2"}}
                 },
                 new Order()
                 {
-                    Id = "Order.3",
+                    Id = "3",
+                    CustomerId = "3",
+                    ProductId = "2",
                     OrderDate = new DateTime(),
-                    Products = new List<Product>() {new() {Name = "Product", Id = "1"}}
+                    //Products = new List<Product>() {new() {Name = "Product", Id = "1"}}
                 },
                 new Order()
                 {
-                    Id = "Order.4",
+                    Id = "4",
                     OrderDate = new DateTime(),
-                    Products = new List<Product>() {new() {Name = "Product", Id = "2"}}
+                    CustomerId = "4",
+                    ProductId = "3",
+                    //Products = new List<Product>() {new() {Name = "Product", Id = "2"}}
                 },
                 new Order()
                 {
-                    Id = "Order.5",
+                    Id = "5",
                     OrderDate = new DateTime(),
-                    Products = new List<Product>() {new() {Name = "Product", Id = "3"}}
+                    CustomerId = "5",
+                    ProductId = "4",
+                    //Products = new List<Product>() {new() {Name = "Product", Id = "3"}}
                 },
 
             };

@@ -1,17 +1,17 @@
 {
   "GlobalConfiguration": {
-    "BaseUrl": "https://gateway:8001"
+    "BaseUrl": "http://localhost:8000"
   },
   "Routes": [
     {
       "UpstreamPathTemplate": "/gateway/product",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/product",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 6001
+          "Port": 6000
         }
       ]
     },
@@ -19,11 +19,11 @@
       "UpstreamPathTemplate": "/gateway/product/{id}",
       "UpstreamHttpMethod": [ "Get", "Delete" ],
       "DownstreamPathTemplate": "/api/product/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 6001
+          "Host": "host.docker.internal",
+          "Port": 6000
         }
       ]
     },
@@ -31,11 +31,11 @@
       "UpstreamPathTemplate": "/gateway/product",
       "UpstreamHttpMethod": [ "Post", "Put" ],
       "DownstreamPathTemplate": "/api/product",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 6001
+          "Host": "host.docker.internal",
+          "Port": 6000
         }
       ]
     },
@@ -43,11 +43,11 @@
       "UpstreamPathTemplate": "/gateway/orders",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DownstreamPathTemplate": "/api/orders",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "orderservice.api",
-          "Port": 5001
+          "Host": "host.docker.internal",
+          "Port": 5000
         }
       ]
     },
@@ -55,11 +55,11 @@
       "UpstreamPathTemplate": "/gateway/orders/{id}",
       "UpstreamHttpMethod": [ "Get", "Delete" ],
       "DownstreamPathTemplate": "/api/orders/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "orderservice.api",
-          "Port": 5001
+          "Host": "host.docker.internal",
+          "Port": 5000
         }
       ]
     },
@@ -67,11 +67,11 @@
       "UpstreamPathTemplate": "/gateway/customer",
           "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DownstreamPathTemplate": "/api/customer",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7001
+          "Host": "host.docker.internal",
+          "Port": 7000
         }
       ]
     },
@@ -79,11 +79,11 @@
       "UpstreamPathTemplate": "/gateway/customer/{id}",
       "UpstreamHttpMethod": [ "Get", "Delete" ],
       "DownstreamPathTemplate": "/api/customer/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7001
+          "Host": "host.docker.internal",
+          "Port": 7000
         }
       ]
     }
