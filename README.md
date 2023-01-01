@@ -130,4 +130,18 @@ First enter the root directory Sendeo, there is a docker-compse.yaml file, open 
 
 ## Tech Stack
 
-![image](https://user-images.githubusercontent.com/19145921/210165120-c0480835-04ba-4ded-b280-0646b48511c7.png)
+* DB Relation Diagram
+
+   ![image](https://user-images.githubusercontent.com/19145921/210183925-9a7e6ff9-c785-4391-8042-137debf3c9c3.png)
+   
+   Sendeo project uses EfCore and thus initial creation of Sendeo DB and tables Customer, Order and Product tables are creation is guarantied. If you ran into trouble you can use these commands for these creation and seeding data procesess.
+   
+      * Please ensure you are in the "CustomerService.API" project directory.
+      * dotnet ef database update
+
+* MicroService Architecture
+   
+   ![image](https://user-images.githubusercontent.com/19145921/210165120-c0480835-04ba-4ded-b280-0646b48511c7.png)
+   
+   
+   
