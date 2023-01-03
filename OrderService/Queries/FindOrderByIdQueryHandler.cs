@@ -9,9 +9,9 @@ namespace OrderService.Queries
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IMapper _mapper;
-        private readonly ILogger<GetAllOrdersQuery> _logger;
+        private readonly ILogger<FindOrderByIdQuery> _logger;
 
-        public FindOrderByIdQueryHandler(IOrderRepository orderRepository, IMapper mapper, ILogger<GetAllOrdersQuery> logger)
+        public FindOrderByIdQueryHandler(IOrderRepository orderRepository, IMapper mapper, ILogger<FindOrderByIdQuery> logger)
         {
             _orderRepository = orderRepository ?? throw new ArgumentNullException(nameof(orderRepository));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));

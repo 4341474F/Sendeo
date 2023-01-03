@@ -57,7 +57,7 @@ namespace OrderService.API.Controllers
         public async Task<ActionResult<Order>> CreateOrder(CreateOrderCommand request)
         {
             var result = await _mediator.Send(new CreateOrderCommand{Order = request.Order});
-            _messageProducer.SendMessage(request.Order);
+            _messageProducer.SendMessage(result);
 
             return result;
         }

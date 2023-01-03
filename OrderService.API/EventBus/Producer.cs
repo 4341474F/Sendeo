@@ -8,7 +8,7 @@ namespace OrderService.API.EventBus
     {
         public void SendMessage<T>(T message)
         {
-            var factory = new ConnectionFactory { HostName = "localhost" };
+            var factory = new ConnectionFactory { HostName = "rabbitmq" };
             using var connection = factory.CreateConnection();
             using var channel = connection.CreateModel();
             channel.QueueDeclare("orders", exclusive:false);
