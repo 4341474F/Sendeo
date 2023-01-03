@@ -3,6 +3,7 @@ using FluentAssertions;
 using Moq;
 using Microsoft.Extensions.Logging;
 using OrderService.API.Mapper;
+using OrderService.Commands;
 using OrderService.Domain;
 using OrderService.Queries;
 using ProductService.Domain;
@@ -110,6 +111,22 @@ namespace Order.UnitTests
             result.Result.CustomerId.Should().Be("1");
             result.Result.OrderDate.Should().Be(DateTime.Today);
             result.Result.Products.Should().AllBeOfType<Product>();
+        }
+
+        [Fact]
+        public async Task Delete_Order_FromMockDatabase_ReturnsBoolean()
+        {
+            var mock = new Mock<IOrderRepository>();
+            var order = PopulateTestOrder();
+            var mocklogger = new Mock<ILogger<DeleteOrderCommandHandler>>();
+            var logger = mocklogger.Object;
+            
+            mock.Setup(m => m.DeleteAsync("1")).ReturnsAsync("1");
+
+            var result = mock.Object.DeleteAsync("1");
+            
+            result.Result.Should().BeOfType<string>();
+            result.Result.Should().NotContain("not found");
         }
 
         private static OrderService.Domain.Order PopulateTestOrder()

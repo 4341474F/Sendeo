@@ -1,5 +1,6 @@
 using AutoMapper;
 using CustomerService.API.Mapper;
+using CustomerService.Commands;
 using FluentAssertions;
 using Moq;
 using Microsoft.Extensions.Logging;
@@ -7,6 +8,8 @@ using CustomerService.Domain;
 using CustomerService.Queries;
 using Microsoft.Extensions.DependencyInjection;
 using MediatR;
+using OrderService.Commands;
+using OrderService.Domain;
 
 namespace Customer.UnitTests
 {
@@ -96,6 +99,21 @@ namespace Customer.UnitTests
             result.Result.Address.Should().Be("Address");
         }
 
+        [Fact]
+        public async Task Delete_Customer_FromMockDatabase_ReturnsBoolean()
+        {
+            var mock = new Mock<ICustomerRepository>();
+            var order = PopulateTestCustomer();
+            var mocklogger = new Mock<ILogger<DeleteCustomerCommandHandler>>();
+            var logger = mocklogger.Object;
+
+            mock.Setup(m => m.DeleteAsync("1")).ReturnsAsync("1");
+
+            var result = mock.Object.DeleteAsync("1");
+
+            result.Result.Should().BeOfType<string>();
+            result.Result.Should().NotContain("not found");
+        }
         private static CustomerService.Domain.Customer PopulateTestCustomer()
         {
             var Customer = new CustomerService.Domain.Customer()
