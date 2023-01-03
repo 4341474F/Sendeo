@@ -9,9 +9,9 @@ namespace CustomerService.Queries
     {
         private readonly ICustomerRepository _customerRepository;
         private readonly IMapper _mapper;
-        private readonly ILogger<GetAllCustomersQuery> _logger;
+        private readonly ILogger<FindCustomerByIdQuery> _logger;
 
-        public FindCustomerByIdQueryHandler(ICustomerRepository customerRepository, IMapper mapper, ILogger<GetAllCustomersQuery> logger)
+        public FindCustomerByIdQueryHandler(ICustomerRepository customerRepository, IMapper mapper, ILogger<FindCustomerByIdQuery> logger)
         {
             _customerRepository = customerRepository ?? throw new ArgumentNullException(nameof(customerRepository));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));

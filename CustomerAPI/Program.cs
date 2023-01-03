@@ -17,7 +17,7 @@ builder.Services.AddDbContext<CustomerApiContext>(options =>
 // Add services to the container.
 //builder.Services.AddScoped<IMessageProducer, Producer>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
-builder.Services.AddMediatR(typeof(GetAllCustomersQuery));
+builder.Services.AddMediatR(typeof(FindCustomerById));
 builder.Services.AddMediatR(typeof(CreateCustomerCommand));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

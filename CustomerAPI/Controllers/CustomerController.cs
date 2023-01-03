@@ -26,7 +26,7 @@ namespace Customer.API.Controllers
         public async Task<ActionResult<IEnumerable<CustomerService.Domain.Customer>>> GetCustomer()
         {
             
-            var customers = await _mediator.Send(new GetAllCustomersQuery());
+            var customers = await _mediator.Send(new FindCustomerById());
 
             return Ok(customers);
         }

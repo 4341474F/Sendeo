@@ -4,7 +4,7 @@ using CustomerService.Domain;
 namespace CustomerService.Queries
 {
 
-    public class GetAllCustomersQuery :IRequest<List<CustomerDto>>
+    public class FindCustomerById :IRequest<List<CustomerDto>>
     {
         
     }
