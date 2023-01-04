@@ -4,12 +4,12 @@ using ProductService.Domain;
 namespace ProductService.Queries
 {
 
-    public class FindProductByIdQuery :IRequest<List<Product>>
+    public class FindProductByIdQuery :IRequest<List<ProductDto>>, IRequest<ProductDto>
     {
-        private string _id { get; set; }
+        public string Id { get; }
         public FindProductByIdQuery(string id)
         {
-            _id = id;
+            Id = id;
         }
     }
 }

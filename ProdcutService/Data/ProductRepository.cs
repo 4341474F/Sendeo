@@ -19,7 +19,7 @@ namespace ProductService.Data
             return order;
         }
 
-        public async Task<List<Product>> GetAllOrders()
+        public async Task<List<Product>> GetAllProducts()
         {
             return await _productContext.Product.ToListAsync();
 
